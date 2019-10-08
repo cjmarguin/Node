@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/cjmarguin/Node#readme",
   "engines": {
-      "node": "10.x"
+    "node": "10.x"
+  },
+  "dependencies": {
+    "express": "^4.17.1"
   }
 }
