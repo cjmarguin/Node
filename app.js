@@ -6,10 +6,10 @@ app.get('/', function(req, res){
     res.send("supp bro");
 });
 
-app.get('/about', function()[
+app.get('/about', function(){
     res.send('<h1>sup beech this about me</h1>');
 
-])
+});
 app.listen(port, function(){ //will not run in heroku, porte number
 
 });
