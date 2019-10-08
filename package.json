@@ -1,0 +1,22 @@
+{
+  "name": "example",
+  "version": "1.0.0",
+  "description": "yeeter",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjmarguin/Node.git"
+  },
+  "author": "Ceej",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjmarguin/Node/issues"
+  },
+  "homepage": "https://github.com/cjmarguin/Node#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
