@@ -6,7 +6,7 @@ app.get('/', function(req, res){
     res.send("supp bro");
 });
 
-app.get('/about', function(){
+app.get('/about', function(req, res){
     res.send('<h1>sup beech this about me</h1>');
 
 });
