@@ -29,6 +29,7 @@ app.post('/addTask', function(req, res){
     var newTask = req.body.newtask;
     task.push(newTask);
     res.redirect('/');
+});
 
 
 app.post('/removeTask', function(req, res){
@@ -45,6 +46,6 @@ app.post('/removeTask', function(req, res){
     }
     res.redirect('/');
 });
-http.createServer(app).listen(port, function(){ //will not run in heroku, porte numberh
+http.createServer(app).listen(port, function(){
 
 });
