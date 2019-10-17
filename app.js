@@ -37,7 +37,9 @@ app.post('/removeTask', function(req, res){
         complete.push(completeTask);
         task.splice(task.indezOf(completeTask), 1);
     }else if(typeof competeTask === "object"){
+        for(var i = 0; i < completeTask.length ; i++ ){
 
+        }
     }
     res.redirect('/');
 });
