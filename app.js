@@ -17,10 +17,12 @@ var port = process.env.PORT || 3000; // port established as constant for maintab
 app.set("views", path.join(__dirname, 'views'));
 app.set("view engine", 'ejs');
 app.use(bodyParser.urlencoded({ encoded: true}));
+
 var task = ["yeet", "yote"];
+var complete = ["yeehaw", 'boiz'];
 
 app.get('/', function(req, res){
-    res.render("index", {task:task});
+    res.render("index", {task:task, complete:complete});
 });
 
 app.post('/addTask', function(req, res){
@@ -28,6 +30,16 @@ app.post('/addTask', function(req, res){
     task.push(newTask);
     res.redirect('/');
 
+
+app.post('/removeTask', function(req, res){
+    var completeTask = req.body.check;
+    if(typeof completeTask === 'string'){
+        complete.push(completeTask);
+        task.splice(task.indezOf(completeTask), 1);
+    }else if(typeof competeTask === "object"){
+
+    }
+    res.redirect('/');
 });
 http.createServer(app).listen(port, function(){ //will not run in heroku, porte numberh
 
