@@ -38,7 +38,7 @@ app.post('/removeTask', function(req, res){
     if(typeof completeTask === 'string'){
         complete.push(completeTask);
         task.splice(task.indexOf(completeTask), 1);
-    }else if(typeof competeTask === "object"){
+    }else if(typeof completeTask === "object"){
         for(var i = 0; i < completeTask.length; i++ ){
             complete.push(completeTask[i]);
             task.splice(task.indexOf(completeTask[i]), 1);
