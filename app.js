@@ -38,6 +38,8 @@ app.post('/removeTask', function(req, res){
         task.splice(task.indezOf(completeTask), 1);
     }else if(typeof competeTask === "object"){
         for(var i = 0; i < completeTask.length ; i++ ){
+            complete.push(completeTask[i]);
+            task.splice(task.indezOf(completeTask[i]), 1);
 
         }
     }
