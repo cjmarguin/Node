@@ -27,7 +27,7 @@ mongoose.Promise = global.Promise;
 let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
-// var task = ["yeet", "yote"];        no longer need
+var task = ["yeet", "yote"];
 var complete = ["yeehaw", 'boiz'];
 
 app.get('/', function(req, res){
