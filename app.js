@@ -25,7 +25,7 @@ const mongoDB = 'mongodb+srv://beech:iYD7FBjjqKyqcK3z@cluster0-trlwr.mongodb.net
 mongoose.connect(mongoDB);
 mongoose.Promise = global.Promise;
 let db = mongoose.connection;
-db.on('error', console.error.bing(console, 'MongooDB connection error:'));
+db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 // var task = ["yeet", "yote"];        no longer need
 var complete = ["yeehaw", 'boiz'];
