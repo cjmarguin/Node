@@ -36,7 +36,7 @@ app.get('/', function(req, res){
 
 app.post('/addTask', function(req, res){
     let newTodo = new Todo({
-        item: req.body.newtask;
+        item: req.body.newtask,
         done: false
     })
     //                                    var newTask = req.body.newtask;      no longer needed
