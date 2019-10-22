@@ -40,7 +40,7 @@ app.get('/', function(req, res){
                 task.push(todo[i].item);
             }
         }
-    }
+    })
     res.render("index", {task:task, complete:complete});
 });
 
