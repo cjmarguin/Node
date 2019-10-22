@@ -11,15 +11,23 @@ var express = require("express"); // I need this in the library
 var bodyParser = require("body-parser");
 
 var app = express(); // calling express
+var mongoose = require('mongoose');
 var port = process.env.PORT || 3000; // port established as constant for maintability
 
 
 app.set("views", path.join(__dirname, 'views'));
 app.set("view engine", 'ejs');
 app.use(express.static("public"));
-app.use(bodyParser.urlencoded({ encoded: true}));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ encoded: false}));
+const Todo = require('./models/todo.model');
+const mongoDB = 'mongodb+srv://beech:iYD7FBjjqKyqcK3z@cluster0-trlwr.mongodb.net/test?retryWrites=true&w=majority' ;
+mongoose.connect(mongoDB);
+mongoose.Promise = global.Promise;
+let db = mongoose.connection;
+db.on('error', console.error.bing(console, 'MongooDB connection error:'));
 
-var task = ["yeet", "yote"];
+// var task = ["yeet", "yote"];        no longer need
 var complete = ["yeehaw", 'boiz'];
 
 app.get('/', function(req, res){
@@ -27,10 +35,21 @@ app.get('/', function(req, res){
 });
 
 app.post('/addTask', function(req, res){
-    var newTask = req.body.newtask;
-    task.push(newTask);
-    res.redirect('/');
+    let newTodo = new Todo({
+        item: req.body.newtask;
+        done: false
+    })
+    //                                    var newTask = req.body.newtask;      no longer needed
+    //                                    task.push(newTask);
+    newTodo.save(function(err){
+        if (err){
+            console.log(err);
+
+        }
+        res.redirect('/');
+    });
 });
+
 
 
 app.post('/removeTask', function(req, res){
