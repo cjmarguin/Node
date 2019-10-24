@@ -38,6 +38,11 @@ app.get('/', function(req, res){
         }else{
             task = [];
             for(i = 0; i < todo.length; i++){
+                if(todo[i].done){
+                    complete.push(todo[i].item);
+                }else{
+                    task.push(todo[i].item);
+                }
                 task.push(todo[i].item);
             }
         }
