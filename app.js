@@ -12,6 +12,7 @@ var bodyParser = require("body-parser");
 
 var app = express(); // calling express
 var mongoose = require('mongoose');
+const fetch = require('node-fetch');
 var port = process.env.PORT || 3000; // port established as constant for maintability
 
 
@@ -28,7 +29,7 @@ let db = mongoose.connection;
 db.on('error', console.error.bind(console, 'MongoDB connection error:'));
 
 var task = []; // make sure it's clean every time
-var complete = ["yeehaw", 'boiz'];
+var complete = [];
 
 app.get('/', function(req, res){
     Todo.find(function(err, todo){
@@ -64,14 +65,21 @@ app.post('/addTask', function(req, res){
 
 app.post('/removeTask', function(req, res){
     var completeTask = req.body.check;
+
     if(typeof completeTask === 'string'){
-        complete.push(completeTask);
-        task.splice(task.indexOf(completeTask), 1);
+        Todo.updateOne({item: completeTask}, {done: true}, function(err){
+        console.log(err);
+        })
+    //complete.push(completeTask);
+    //task.splice
+
     }else if(typeof completeTask === "object"){
         for(var i = 0; i < completeTask.length; i++ ){
-            complete.push(completeTask[i]);
-            task.splice(task.indexOf(completeTask[i]), 1);
-
+            //complete.push(completeTask[i]);
+            //task.splice(task.indexOf(completeTask[i]), 1);
+            Todo.updateOne({item: completeTask[i]}, {done: true}, function(err){
+            console.log(err);
+            })
         }
     }
     res.redirect('/');
