@@ -37,16 +37,16 @@ app.get('/', function(req, res){
             console.log(err)
         }else{
             task = [];
+            complete = [];
             for(i = 0; i < todo.length; i++){
                 if(todo[i].done){
                     complete.push(todo[i].item);
                 }else{
                     task.push(todo[i].item);
                 }
-                task.push(todo[i].item);
             }
         }
-    })
+    });
     res.render("index", {task:task, complete:complete});
 });
 
@@ -54,7 +54,7 @@ app.post('/addTask', function(req, res){
     let newTodo = new Todo({
         item: req.body.newtask,
         done: false
-    })
+    });
     //                                    var newTask = req.body.newtask;      no longer needed
     //                                    task.push(newTask);
     newTodo.save(function(err){
